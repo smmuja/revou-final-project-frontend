@@ -1,0 +1,19 @@
+Home = '/'
+
+Auth
+Register = '/register'
+Login = '/login'
+
+Data
+
+User = '/users'
+User detail = '/users/username'
+User update = '/user/?id/edit'
+
+Business = '/business'
+Business detail = '/business/?id'
+Business update form = '/business/?id/edit
+
+Product = '/product'
+Product detail = '/product/?id'
+Product update form = '/product/?id/edit
