@@ -21,7 +21,7 @@ import { registerAction } from "./pages/auth/Register/Register";
 
 import { AllBusinessLoader } from "./pages/business/Business";
 
-import { QueryClient, QueryClientProvider } from "react-query";
+// import { QueryClient, QueryClientProvider } from "react-query";
 import { userEditAction } from "./pages/user/UserEdit";
 import { loginAction } from "./pages/auth/Login/Login";
 import { userDetailLoader } from "./pages/user/UserDetail";
@@ -36,7 +36,7 @@ import {
   BusinessEditLoader,
 } from "./pages/business/BusinessEdit";
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 function App() {
   const router = createBrowserRouter([
@@ -132,9 +132,9 @@ function App() {
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+      {/* <QueryClientProvider client={queryClient}> */}
+      <RouterProvider router={router} />
+      {/* </QueryClientProvider> */}
     </>
   );
 }
