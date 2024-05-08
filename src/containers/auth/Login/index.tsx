@@ -1,88 +1,67 @@
+import { Form, redirect } from "react-router-dom";
+import { Input, Text, Button, FormCard } from "../../../components";
+import { LoginPayload, LoginResponse } from "../../../api/postUserLogin";
+import { AxiosResponse } from "axios";
+import baseApi from "../../../api/baseApi";
+import { setCookies } from "../../../utils/cookie";
 
-import { Link } from 'react-router-dom'
-import { Input, Text, Button} from '../../../components'
+async function action({ request }: { request: Request }) {
+  const formData = (await request.formData()) as FormData;
+  // const username = formData.get("username");
+  const email = formData.get("email");
+  const password = formData.get("password");
 
-// import { useNavigate } from 'react-router-dom'
-
-
-// import { useFormik } from 'formik'
-// import { useState, useContext } from 'react'
-
-// import * as yup from 'yup'
-
-// import axios, {AxiosError} from 'axios'
-
-
-// interface DataProps {
-//     email: string;
-//     password: string;
-// }
-
-
-const Login = () => {
-
-    // const [selectedUser] = useState<DataProps>();
-
-
-    return (
-        // <div className="flex min-h-full flex-row justify-center px-6 py-12 lg:px-8">
-
-            // {/* <div className="flex min-h-full flex-row justify-center px-6 py-12 lg:px-8">
-            //     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Show your product</h2>
-            //     <div></div>
-            // </div> */}
-        <>
-            <div>
-                <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-
-                    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Log in to your account</h2>
-                    </div>
-                </div>
-
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-
-                    <form action="">
-
-                        <fieldset>
-
-                            <div>
-                                <Text>{'Email'}</Text>
-                                <Input className='block border-neutral-400 border' 
-                                name={'email'}
-                                placeholder='Input email'
-                                />
-                                
-                            </div>
-                            <div>
-                                <Text>{'Passowrd'}</Text>
-                                <Input className='block border-neutral-400 border' 
-                                name={'password'}
-                                placeholder='Input password'
-                                />
-                                
-                            </div>
-                            <div className=' space-x-2 space-y-2' >
-                            <Button label={'Login'} type='submit' className='bg-gray-500' />
-                            </div>
-                        </fieldset>
-                    </form>
-
-                    <p className="mt-10 text-center text-sm text-gray-500">
-                        Not a member yet?  
-                        <Link to ='/subscribe' className="font-semibold leading-6 text-black hover:text-indigo-500">  Subscribe</Link>
-                        </p>
-                </div>
-
-            </div>
-        </>
-
-        // </div>
-
-    )
-
-
+  const response = await baseApi
+    .post<LoginPayload, AxiosResponse<LoginResponse>>("/user/login", {
+      // username,
+      email,
+      password,
+    })
+    .then((d) => d.data);
+  console.log(response);
+  setCookies(response.access_token);
+  return redirect(`/user/${response.user_id}`);
 }
 
+const Login = () => {
+  // const [selectedUser] = useState<DataProps>();
 
-export default Login
+  return (
+    <>
+      <div>
+        <FormCard
+          topLabel={"Log in to your account"}
+          footer={" Not a member yet?"}
+          link={"/register"}
+          footerLabel={"Register"}
+        >
+          <Form action="" method="post">
+            <fieldset>
+              <div>
+                <Text>{"Email"}</Text>
+                <Input className="" name={"email"} placeholder="Input email" />
+              </div>
+              <div>
+                <Text>{"Password"}</Text>
+                <Input
+                  type="password"
+                  className=""
+                  name={"password"}
+                  placeholder="Input password"
+                />
+              </div>
+              <div className=" ">
+                <Button label={"Login"} type="submit" className="" />
+              </div>
+            </fieldset>
+          </Form>
+        </FormCard>
+      </div>
+    </>
+
+    // </div>
+  );
+};
+
+export default Login;
+export { action as loginAction };
