@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigation } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import baseApi from "../../api/baseApi";
 import { getUserDetail } from "../../api/getUserDetail";
 import { useNavigate } from "react-router-dom";

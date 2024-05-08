@@ -5,7 +5,7 @@ import { UserEditPayload, UserEditResponse } from "../../api/editUserDetail";
 
 import baseApi from "../../api/baseApi";
 import { AxiosResponse } from "axios";
-import { getUserDetail } from "../../api/getUserDetail";
+// import { getUserDetail } from "../../api/getUserDetail";
 import { getCookies } from "../../utils/cookie";
 import { useUser } from "../../hooks/useUser";
 
@@ -138,10 +138,7 @@ const UserEdit = () => {
           </div>
         </Form>
         <div className="w-full flex justify-stretch">
-          <button type="submit">submit</button>
-          <Button label="Save" type="submit" className="">
-            submit
-          </Button>
+          <Button label="Save" type="submit" className=""></Button>
           <ButtonCancel label={"Cancel"}></ButtonCancel>
         </div>
       </FormCard>

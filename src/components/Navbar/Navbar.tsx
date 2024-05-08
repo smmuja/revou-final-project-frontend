@@ -1,19 +1,10 @@
 // import { Hamburger } from "./Hamburger";
 // import NavItem from "./NavItem";
-import { Link, redirect } from "react-router-dom";
-import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
+// import SearchBar from "./SearchBar";
 import IsLogin from "./IsLogin";
 
-import {
-  Group,
-  Button,
-  Divider,
-  Box,
-  Burger,
-  Drawer,
-  NavLink,
-} from "@mantine/core";
-// import { MantineLogo } from "@mantinex/mantine-logo";
+import { Group, Divider, Box, Burger, Drawer, NavLink } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconHome2, IconBuildingStore, IconCake } from "@tabler/icons-react";
 
@@ -33,17 +24,32 @@ const Navbar = () => {
           </Link>
           <Group h="100%" gap={20} visibleFrom="sm">
             <Link to="/" className="">
-              Home
+              <NavLink
+                label="Home"
+                leftSection={
+                  <IconHome2 size="1rem" stroke={1.5} className="" />
+                }
+              />
             </Link>
 
             <Link to="/business" className="">
-              Business
+              <NavLink
+                label="Business"
+                leftSection={
+                  <IconBuildingStore size="1rem" stroke={1.5} className="" />
+                }
+              />
             </Link>
             <Link to="/product" className="">
-              Product
+              <NavLink
+                label="Product"
+                leftSection={<IconCake size="1rem" stroke={1.5} className="" />}
+              />
             </Link>
+            <Group>
+              <IsLogin />
+            </Group>
           </Group>
-          <IsLogin />
 
           <Burger
             opened={drawerOpened}
@@ -90,10 +96,7 @@ const Navbar = () => {
         <Divider my="sm" />
 
         <Group justify="center" grow pb="xl" px="md">
-          <Button variant="default" onClick={() => redirect("/login")}>
-            Log in
-          </Button>
-          <Button>Register</Button>
+          <IsLogin />
         </Group>
       </Drawer>
     </Box>

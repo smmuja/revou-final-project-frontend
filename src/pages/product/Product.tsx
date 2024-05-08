@@ -20,10 +20,15 @@ const Product = () => {
   return (
     <>
       {productAll.map((product) => {
+        const productImage =
+          product.profile_url.length > 0
+            ? product.profile_url
+            : "../src/assets/product.png";
+
         return (
           <Card key={product.id}>
             <p>{product.product_name}</p>
-            <img src={""} alt="" />
+            <img src={productImage} alt="" className="size-50" />
             <p>{product.product_price}</p>
           </Card>
         );

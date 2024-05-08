@@ -15,26 +15,26 @@ import {
   BusinessAdd,
   ProductAdd,
   ProductEdit,
-} from "./containers";
-import { Login, Register } from "./containers/auth";
-import { registerAction } from "./containers/auth/Register";
+} from "./pages";
+import { Login, Register } from "./pages/auth";
+import { registerAction } from "./pages/auth/Register/Register";
 
-import { AllBusinessLoader } from "./containers/business";
+import { AllBusinessLoader } from "./pages/business/Business";
 
 import { QueryClient, QueryClientProvider } from "react-query";
-import { userEditAction, userEditLoader } from "./containers/user/UserEdit";
-import { loginAction } from "./containers/auth/Login";
-import { userDetailLoader } from "./containers/user/UserDetail";
-import { AllProductLoader } from "./containers/product";
+import { userEditAction } from "./pages/user/UserEdit";
+import { loginAction } from "./pages/auth/Login/Login";
+import { userDetailLoader } from "./pages/user/UserDetail";
+import { AllProductLoader } from "./pages/product/Product";
 // import { BusinessDetailLoader } from "./containers/business/BusinessDetail";
 import { ErrorPage } from "./errorPage";
-import { productEditAction } from "./containers/product/ProductEdit";
-import { BusinessAddAction } from "./containers/business/BusinessAdd";
-import { ProductAddAction } from "./containers/product/ProductAdd";
+import { productEditAction } from "./pages/product/ProductEdit";
+import { BusinessAddAction } from "./pages/business/BusinessAdd";
+import { ProductAddAction } from "./pages/product/ProductAdd";
 import {
   BusinessEditAction,
   BusinessEditLoader,
-} from "./containers/business/BusinessEdit";
+} from "./pages/business/BusinessEdit";
 
 const queryClient = new QueryClient();
 

@@ -6,11 +6,6 @@ import { NavLink, Group, Button } from "@mantine/core";
 import { IconUser, IconLogout } from "@tabler/icons-react";
 // import { use } from "react-router-dom";
 
-/**
- * 
- *  Abc1Abc1.
-dummy2@email.com
- */
 const IsLogin = () => {
   const access_token = getCookies() || "";
   const isLogin = access_token?.length > 0;
@@ -34,7 +29,7 @@ const IsLogin = () => {
           <Link to="/user/:id" className="">
             <NavLink
               label="Profile"
-              leftSection={<IconUser size="1rem" stroke={1.5} />}
+              leftSection={<IconUser size="1rem" stroke={1.5} className="" />}
             />
           </Link>
           <Button
@@ -49,7 +44,11 @@ const IsLogin = () => {
         </Group>
       ) : (
         <Group justify="center" grow pb="xl" px="md">
-          <Button className="mt-5" variant="default" onClick={handleLogin}>
+          <Button
+            className="mt-5 font-black"
+            variant="outline"
+            onClick={handleLogin}
+          >
             Log in
           </Button>
           <Button className="mt-5" onClick={handleRegister}>
