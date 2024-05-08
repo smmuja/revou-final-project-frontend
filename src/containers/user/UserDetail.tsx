@@ -1,12 +1,15 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import baseApi from "../../api/baseApi";
 import { getUserDetail } from "../../api/getUserDetail";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Table, TableRow } from "../../components";
 import { getCookies } from "../../utils/cookie";
 import { useBusiness } from "../../hooks/useUserBusiness";
-
+import { useUser } from "../../hooks/useUser";
+import { BusinessCard } from "./BusinessCard";
 export async function loader() {
+  const setAllBusiness = useBusiness.getState().setAllBusiness;
+  const setUser = useUser.getState().setUser;
   const headers = {
     "Content-Type": "application/json",
     Authorization: "Bearer " + getCookies(),
@@ -17,6 +20,15 @@ export async function loader() {
       headers: headers,
     })
     .then((d) => d.data);
+  setAllBusiness(user.business);
+  setUser({
+    address: user.address,
+    description: user.description,
+    email: user.email,
+    occupation: user.occupation,
+    phone_number: user.phone_number,
+    username: user.username,
+  });
   console.log(user);
   // getCookies(user.id);
 
@@ -25,10 +37,12 @@ export async function loader() {
 
 const UserDetail = () => {
   const navigate = useNavigate();
-  const { setAllBusiness } = useBusiness();
-
+  // const { setAllBusiness } = useBusiness();
   const userDetail = useLoaderData() as getUserDetail;
-  setAllBusiness(userDetail.business);
+  // if (userDetail) {
+  //   setAllBusiness(userDetail.business);
+  // }
+
   return (
     <>
       <div>
@@ -36,7 +50,7 @@ const UserDetail = () => {
           <div className="flex flex-row justify-between">
             <h2 className="font-bold">User Information</h2>
             <Button
-              onClick={() => navigate("/user/:id/edit")}
+              onClick={() => navigate("/user/edit")}
               label={"Edit Profile"}
             ></Button>
           </div>
@@ -72,6 +86,10 @@ const UserDetail = () => {
         <div className="mt-20">
           <Card className=" ">
             <h2 className="font-bold mb-5">Business List</h2>
+            {userDetail.business.map((business) => {
+              return <BusinessCard business={business} key={business.id} />;
+            })}
+
             <Card className="">
               <div className="flex flex-row items-end gap-5">
                 <img

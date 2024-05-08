@@ -1,12 +1,15 @@
 // import baseApi from "./baseApi";
 
-export interface getUserDetail {
+export interface User {
   phone_number: string;
   address: string;
   occupation: string;
   description: string;
   username: string;
   email: string;
+}
+
+export interface getUserDetail extends User {
   id: string;
   create_at: Date;
   update_at: Date;

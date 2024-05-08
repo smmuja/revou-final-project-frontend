@@ -11,7 +11,7 @@ import {
   Button as MantineButton,
   Text as MantineText,
 } from "@mantine/core";
-import { BusinessCard } from "../../components/Card/BusinessCard";
+import { BusinessCard } from "./BusinessCard";
 
 async function action({ request }: { request: Request }) {
   const formData = (await request.formData()) as FormData;
@@ -82,14 +82,15 @@ const ProductAdd = () => {
                   <MantineButton>Hover to reveal the card</MantineButton>
                 </HoverCard.Target>
                 <HoverCard.Dropdown>
-                  <MantineText size="sm">
-                    Hover card is revealed when user hovers over target element,
-                  </MantineText>
-                  {businessList.map((business) => {
-                    return (
-                      <BusinessCard business={business} key={business.id} />
-                    );
-                  })}
+                  <ul>
+                    {businessList.map((business) => {
+                      return (
+                        <li>
+                          <BusinessCard business={business} key={business.id} />
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </HoverCard.Dropdown>
               </HoverCard>
             </Group>

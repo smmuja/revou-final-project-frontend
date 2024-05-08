@@ -7,6 +7,7 @@ import baseApi from "../../api/baseApi";
 import { AxiosResponse } from "axios";
 import { getUserDetail } from "../../api/getUserDetail";
 import { getCookies } from "../../utils/cookie";
+import { useUser } from "../../hooks/useUser";
 
 export async function loader() {
   const headers = {
@@ -66,7 +67,8 @@ async function action({ request }: { request: Request }) {
 }
 
 const UserEdit = () => {
-  const userDetail = useLoaderData() as getUserDetail;
+  // const userDetail = useLoaderData() as getUserDetail;
+  const { user } = useUser();
   return (
     <div>
       <FormCard
@@ -82,7 +84,7 @@ const UserEdit = () => {
               className=""
               name="username"
               placeholder="Username"
-              defaultValue={userDetail?.username}
+              defaultValue={user?.username}
             ></Input>
           </div>
           <div>
@@ -91,7 +93,7 @@ const UserEdit = () => {
               className=""
               name="email"
               placeholder="Email"
-              defaultValue={userDetail?.email}
+              defaultValue={user?.email}
             ></Input>
           </div>
 
@@ -102,7 +104,7 @@ const UserEdit = () => {
               type="text"
               name="address"
               placeholder="Address"
-              defaultValue={userDetail.address}
+              defaultValue={user.address}
             ></Input>
           </div>
           <div>
@@ -112,7 +114,7 @@ const UserEdit = () => {
               type="text"
               name="occupation"
               placeholder="Occupation"
-              defaultValue={userDetail?.occupation}
+              defaultValue={user?.occupation}
             ></Input>
           </div>
           <div>
@@ -122,7 +124,7 @@ const UserEdit = () => {
               type="text"
               name="phone"
               placeholder="Phone number"
-              defaultValue={userDetail?.phone_number}
+              defaultValue={user?.phone_number}
             ></Input>
           </div>
           <div>
@@ -131,12 +133,15 @@ const UserEdit = () => {
               className=""
               name="description"
               placeholder="Description"
-              defaultValue={userDetail?.description}
+              defaultValue={user?.description}
             ></TextArea>
           </div>
         </Form>
         <div className="w-full flex justify-stretch">
-          <Button label="Save" type="submit" className=""></Button>
+          <button type="submit">submit</button>
+          <Button label="Save" type="submit" className="">
+            submit
+          </Button>
           <ButtonCancel label={"Cancel"}></ButtonCancel>
         </div>
       </FormCard>

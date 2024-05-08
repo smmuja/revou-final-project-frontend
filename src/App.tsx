@@ -68,10 +68,10 @@ function App() {
           loader: userDetailLoader,
         },
         {
-          path: "/user/:id/edit",
+          path: "/user/edit",
           element: <UserEdit />,
           action: userEditAction,
-          loader: userEditLoader,
+          // loader: userEditLoader,
         },
         {
           path: "/business",

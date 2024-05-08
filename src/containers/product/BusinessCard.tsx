@@ -9,9 +9,11 @@ export const BusinessCard = ({ business }: { business: Business }) => {
   };
   return (
     <div>
-      <input type="radio" />
-
-      <Button onClick={handleSetBusinessId}>{business.business_name}</Button>
+      <p>
+        <span>Business Name </span>
+        <span>{business.business_name}</span>
+      </p>
+      <Button onClick={handleSetBusinessId}>Use Business</Button>
     </div>
   );
 };
