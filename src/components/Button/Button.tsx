@@ -5,7 +5,6 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = ({ label, ...props }: Props) => {
-  console.error("hallo");
   return (
     <button
       {...props}

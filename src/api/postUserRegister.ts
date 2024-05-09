@@ -55,3 +55,9 @@ export interface Product {
   create_at: Date;
   update_at: Date;
 }
+
+export interface RegisterError {
+  code: number;
+  message: string;
+  status: string;
+}
