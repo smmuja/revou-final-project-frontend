@@ -1,4 +1,4 @@
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import FormCard from "../../components/FormCard";
 import { Button, ButtonCancel, Input, Text, TextArea } from "../../components";
 import { UserEditPayload, UserEditResponse } from "../../api/editUserDetail";
@@ -66,7 +66,7 @@ async function action({ request }: { request: Request }) {
   return redirect(`/user/${response.id}`);
 }
 
-const UserEdit = () => {
+const UserEditPage = () => {
   // const userDetail = useLoaderData() as getUserDetail;
   const { user } = useUser();
   return (
@@ -146,6 +146,6 @@ const UserEdit = () => {
   );
 };
 
-export default UserEdit;
+export default UserEditPage;
 export { action as userEditAction };
 export { loader as userEditLoader };

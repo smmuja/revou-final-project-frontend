@@ -63,7 +63,7 @@ async function action({ request }: { request: Request }) {
   return redirect(`/business/${response.id}`);
 }
 
-const BusinessEdit = () => {
+const BusinessEditPage = () => {
   const businessDetail = useLoaderData() as getBusinessDetail;
 
   return (
@@ -118,6 +118,6 @@ const BusinessEdit = () => {
   );
 };
 
-export default BusinessEdit;
+export default BusinessEditPage;
 export { loader as BusinessEditLoader };
 export { action as BusinessEditAction };

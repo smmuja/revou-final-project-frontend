@@ -1,6 +1,6 @@
 import { Card, Button } from "../../components";
 
-const ProductDetail = () => {
+const ProductDetailPage = () => {
   return (
     <>
       <Card>
@@ -43,4 +43,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default ProductDetailPage;

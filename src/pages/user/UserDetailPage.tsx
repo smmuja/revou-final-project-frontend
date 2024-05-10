@@ -7,6 +7,7 @@ import { getCookies } from "../../utils/cookie";
 import { useBusiness } from "../../hooks/useUserBusiness";
 import { useUser } from "../../hooks/useUser";
 import { BusinessCard } from "./BusinessCard";
+
 export async function loader() {
   const setAllBusiness = useBusiness.getState().setAllBusiness;
   const setUser = useUser.getState().setUser;
@@ -35,13 +36,18 @@ export async function loader() {
   return user;
 }
 
-const UserDetail = () => {
+const UserDetailPage = () => {
   const navigate = useNavigate();
   // const { setAllBusiness } = useBusiness();
   const userDetail = useLoaderData() as getUserDetail;
   // if (userDetail) {
   //   setAllBusiness(userDetail.business);
   // }
+
+  const userImage =
+    userDetail.profile_url.length > 0
+      ? userDetail.profile_url
+      : "../src/assets/userDummy.png";
 
   return (
     <>
@@ -55,7 +61,7 @@ const UserDetail = () => {
             ></Button>
           </div>
           <div className="flex justify-center">
-            <img src="../src/assets/user.png" alt="" className="size-60" />
+            <img src={userImage} alt="" className="size-60" />
             <p></p>
           </div>
           <Table label="" data="">
@@ -74,13 +80,8 @@ const UserDetail = () => {
               label={"Occupation"}
               data={userDetail.occupation}
             ></TableRow>
-            <TableRow
-              label={""}
-              data={
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae mollitia, unde veritatis provident voluptatum eligendi obcaecati ipsum soluta sequi illum excepturi non alias expedita a quia, magni voluptas, tempore doloribus?"
-              }
-            ></TableRow>
           </Table>
+          <p className="ml-4 mt-3">{userDetail.description}</p>
         </Card>
 
         <div className="mt-20">
@@ -90,32 +91,6 @@ const UserDetail = () => {
               return <BusinessCard business={business} key={business.id} />;
             })}
 
-            <Card className="">
-              <div className="flex flex-row items-end gap-5">
-                <img
-                  src="../src/assets/business.png"
-                  alt=""
-                  className="size-32"
-                />
-                <h3 className="font-semibold">Business name</h3>
-              </div>
-              <Table className="text-sm" label={""} data={""}>
-                <TableRow label={"Total Product"} data={"0"}></TableRow>
-                <TableRow label={"Created at"} data={"00-00-00"}></TableRow>
-              </Table>
-              <div className="flex flex-row justify-end gap-2">
-                <Button
-                  className="w-1/5 bg-yellow-400"
-                  label={"View"}
-                  onClick={() => navigate("/business/:id")}
-                />
-                <Button
-                  className="w-1/5"
-                  label={"Edit"}
-                  onClick={() => navigate("/business/:id/edit")}
-                />
-              </div>
-            </Card>
             <Button
               className="w-full m-12"
               label={"Add Business"}
@@ -128,5 +103,5 @@ const UserDetail = () => {
   );
 };
 
-export default UserDetail;
+export default UserDetailPage;
 export { loader as userDetailLoader };

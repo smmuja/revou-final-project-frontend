@@ -1,6 +1,6 @@
 import { Card } from "../../components";
 
-const User = () => {
+const UserAllPage = () => {
   return (
     <>
       <Card>
@@ -27,4 +27,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserAllPage;

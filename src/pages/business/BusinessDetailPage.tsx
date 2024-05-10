@@ -19,37 +19,12 @@ import { Button, Card, Table, TableRow } from "../../components";
 //   .get<getBusinessDetail>(`/business/${}`)
 // }
 
-const BusinessDetail = () => {
+const BusinessDetailPage = () => {
   const navigate = useNavigate();
   // const businessDetail = useLoaderData() as getBusinessDetail;
 
   return (
     <>
-      <div>
-        {/* <Card padding={15} key={businessDetail.id}>
-          <h2 className="font-bold">Business Information</h2>
-          <img src="../src/assets/business.png" alt="" className="size-60" />
-          <h4>Sector : {businessDetail.business_types}</h4>
-          <h4>Established at: {}</h4>
-          <h4>Number of employees: </h4>
-          <h4>Address: </h4>
-          <p className="truncate ...">
-            Description: Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit.
-          </p>
-        </Card> */}
-
-        {/* <div>
-          <Card>
-            <h2 className="font-bold">Products</h2>
-            <img src="../src/assets/product.png" alt="" className="size-60" />
-            <h4>Title</h4>
-            <h4>Price</h4>
-            <p>Descrription :</p>
-          </Card>
-        </div> */}
-      </div>
-
       <div>
         <Card>
           <div className="flex flex-row justify-between">
@@ -99,5 +74,5 @@ const BusinessDetail = () => {
   );
 };
 
-export default BusinessDetail;
+export default BusinessDetailPage;
 // export { loader as BusinessDetailLoader };

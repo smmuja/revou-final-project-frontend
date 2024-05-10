@@ -6,17 +6,36 @@ import { Business } from "../api/getUserDetail";
 const initialState = {
   business: [] as Business[],
   currentBusinessId: "",
+  currentBusiness: {} as Business,
 };
 type Actions = {
-  setCurrentBusinessId: (values: string) => void;
-  resetCurrentBusinessId: () => void;
+  setAllBusiness: (business: Business[]) => void;
+  setCurrentBusinessId: (id: string) => void;
+  setCurrentBusiness: (business: Business) => void;
 
-  setAllBusiness: (allBusiness: Business[]) => void;
+  // resetCurrentBusinessId: () => void;
 };
+// type State = typeof initialState;
+// export const useBusiness = create<State & Actions>((set) => ({
+//   ...initialState,
+//   resetCurrentBusinessId: () => set({ currentBusinessId: "" }),
+//   setCurrentBusinessId: (values: string) => set({ currentBusinessId: values }),
+//   setAllBusiness: (allBusiness) => set({ business: allBusiness }),
+// }));
+
 type State = typeof initialState;
+
 export const useBusiness = create<State & Actions>((set) => ({
   ...initialState,
-  resetCurrentBusinessId: () => set({ currentBusinessId: "" }),
-  setCurrentBusinessId: (values: string) => set({ currentBusinessId: values }),
-  setAllBusiness: (allBusiness) => set({ business: allBusiness }),
+  setAllBusiness: (business) => {
+    set({ business: business });
+  },
+  setCurrentBusinessId: (id) => {
+    set({ currentBusinessId: id });
+  },
+  setCurrentBusiness: (business) => {
+    set({ currentBusiness: business });
+    set({ currentBusinessId: business.id });
+  },
 }));
+// export default useBusiness;

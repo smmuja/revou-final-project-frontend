@@ -16,7 +16,7 @@ export async function loader() {
   return business;
 }
 
-const Business = () => {
+const BusinessAllPage = () => {
   const businessAll = useLoaderData() as AllBusiness[];
   //   console.log(business);
   return (
@@ -24,6 +24,11 @@ const Business = () => {
       <div className="flex flex-row">
         <div>
           {businessAll.map((business) => {
+            const businessImage =
+              business.profile_url.length > 0
+                ? business.profile_url
+                : "../src/assets/dummy.png";
+
             return (
               <div className="sm:flex flex-row">
                 <Card key={business.id}>
@@ -36,33 +41,20 @@ const Business = () => {
                     <p className="justify-end">{business.username}</p>
                   </div>
                   <div className="flex justify-center">
-                    <img
-                      src={business.profile_url}
-                      alt=""
-                      className="size-60"
-                    />
+                    <img src={businessImage} alt="" className="size-60" />
                   </div>
                   <img
                     src={`${business.profile_url} | './src/assets/business.png' `}
                     alt=""
                   />
-                  {/* <div className="flex flex -row">
-                <p>Joined :{business.create_at}</p>
-                <p></p>
-              </div> */}
+
                   <h3 className="font-semibold">{business.business_name}</h3>
                   <div className="border-0 mr-3 p-3">
                     <p>{business.business_types}</p>
                     <p>{business.user_email}</p>
                     <p>{business.username}</p>
                     <h4 className="font-medium mt-3">Business Description</h4>
-                    <p className="truncate ...">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Possimus aspernatur asperiores ipsa, itaque magnam
-                      recusandae, voluptatum eligendi nisi molestias sequi, quas
-                      molestiae inventore ea quasi perferendis commodi delectus!
-                      Qui, inventore!
-                    </p>
+                    <p className="truncate ...">{business.description}</p>
                   </div>
                 </Card>
                 <div className="hidden md:flex">
@@ -80,6 +72,6 @@ const Business = () => {
   );
 };
 
-export default Business;
+export default BusinessAllPage;
 
 export { loader as AllBusinessLoader };

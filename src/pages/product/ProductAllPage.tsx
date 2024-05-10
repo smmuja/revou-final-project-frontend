@@ -14,7 +14,7 @@ export async function loader() {
   return product;
 }
 
-const Product = () => {
+const ProductAllPage = () => {
   const productAll = useLoaderData() as AllProduct[];
 
   return (
@@ -45,5 +45,5 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductAllPage;
 export { loader as AllProductLoader };

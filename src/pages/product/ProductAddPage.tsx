@@ -41,7 +41,7 @@ async function action({ request }: { request: Request }) {
   return redirect(`/product/${response.id}`);
 }
 
-const ProductAdd = () => {
+const ProductAddPage = () => {
   const { business: businessList } = useBusiness();
 
   return (
@@ -105,5 +105,5 @@ const ProductAdd = () => {
   );
 };
 
-export default ProductAdd;
+export default ProductAddPage;
 export { action as ProductAddAction };
