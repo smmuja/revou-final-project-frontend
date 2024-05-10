@@ -1,11 +1,10 @@
-import { InputHTMLAttributes } from "react";
+import { TextareaHTMLAttributes } from "react";
 
-type InputProps = InputHTMLAttributes<HTMLInputElement>;
+type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-const Input = (props: InputProps) => {
+const TextArea = (props: TextAreaProps) => {
   return (
-    <input
-      type=""
+    <textarea
       {...props}
       className={`${props.className} && 
         ' block flex-1 border-2 border-neutral-400 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 rounded-md w-full ' `}
@@ -13,4 +12,4 @@ const Input = (props: InputProps) => {
   );
 };
 
-export default Input;
+export default TextArea;
