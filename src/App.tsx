@@ -125,15 +125,6 @@ function App() {
         },
       ],
     },
-    {
-      element: <ProtectedLayout />,
-      children: [
-        {
-          path: "/try",
-          element: <></>,
-        },
-      ],
-    },
   ]);
 
   // const router = createBrowserRouter([

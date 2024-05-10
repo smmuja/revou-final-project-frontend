@@ -1,7 +1,14 @@
 #
 
 - [] make it responsive
-- [] sending image
+
+- [x] improve folder structure
+
+# In progress
+
 - [] clean work space
 - [] remove unused element
-- [] improve folder structure
+
+# Doing
+
+- [] sending image

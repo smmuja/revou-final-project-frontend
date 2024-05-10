@@ -1,5 +1,5 @@
 import { ComponentProps, PropsWithChildren } from "react";
-import { Business } from "../../api/getUserDetail";
+import { Business } from "@/api/Business";
 import { Button, Card } from "../../components";
 import { useNavigate } from "react-router-dom";
 import SendImage from "../business/SendBusinessImage";

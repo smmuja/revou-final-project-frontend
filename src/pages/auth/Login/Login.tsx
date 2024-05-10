@@ -1,6 +1,6 @@
 import { Form, redirect } from "react-router-dom";
 import { Input, Text, Button, FormCard } from "../../../components";
-import { LoginPayload, LoginResponse } from "../../../api/postUserLogin";
+import { LoginRegisterPayload, LoginRegisterResponse } from "@/api/User";
 import { AxiosResponse } from "axios";
 import baseApi from "../../../api/baseApi";
 import { setCookies } from "../../../utils/cookie";
@@ -12,11 +12,14 @@ async function action({ request }: { request: Request }) {
   const password = formData.get("password");
 
   const response = await baseApi
-    .post<LoginPayload, AxiosResponse<LoginResponse>>("/user/login", {
-      // username,
-      email,
-      password,
-    })
+    .post<LoginRegisterPayload, AxiosResponse<LoginRegisterResponse>>(
+      "/user/login",
+      {
+        // username,
+        email,
+        password,
+      }
+    )
     .then((d) => d.data);
   console.log(response);
   setCookies(response.access_token);
