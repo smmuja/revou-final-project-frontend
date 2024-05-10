@@ -2,6 +2,7 @@ import { ComponentProps, PropsWithChildren } from "react";
 import { Business } from "../../api/getUserDetail";
 import { Button, Card } from "../../components";
 import { useNavigate } from "react-router-dom";
+import SendImage from "../business/SendBusinessImage";
 
 interface BusinessCardProps extends ComponentProps<"div">, PropsWithChildren {
   business: Business;
@@ -15,13 +16,13 @@ export function BusinessCard({
   const businessImage =
     business.profile_url.length > 0
       ? business.profile_url
-      : "../src/assets/business.png";
+      : "../src/assets/dummy.png";
 
   const navigate = useNavigate();
 
   return (
     <>
-      <Card {...resProps} className="">
+      <Card {...resProps} className="min-w-96">
         <img src={businessImage} alt="" className="size-32" />
         <div>
           <p>
@@ -47,6 +48,9 @@ export function BusinessCard({
               label={"Edit"}
               onClick={() => navigate("/business/:id/edit")}
             />
+          </div>
+          <div>
+            <SendImage />
           </div>
         </div>
       </Card>

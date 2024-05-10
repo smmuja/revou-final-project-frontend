@@ -1,17 +1,17 @@
 export { default as Home } from "./Home";
 
-export { default as User } from "./user/User";
-export { default as UserDetail } from "./user/UserDetail";
+export { default as UserAllPage } from "./user/UserAllPage";
+export { default as UserDetailPage } from "./user/UserDetailPage";
 export { default as UserSnippet } from "./user/UserSnippet";
-export { default as UserEdit } from "./user/UserEdit";
+export { default as UserEditPage } from "./user/UserEditPage";
 
-export { default as Business } from "./business/Business";
-export { default as BusinessDetail } from "./business/BusinessDetail";
-export { default as BusinessAdd } from "./business/BusinessAdd";
-export { default as BusinessEdit } from "./business/BusinessEdit";
+export { default as BusinessAllPage } from "./business/BusinessAllPage";
+export { default as BusinessDetailPage } from "./business/BusinessDetailPage";
+export { default as BusinessAddPage } from "./business/BusinessAddPage";
+export { default as BusinessEditPage } from "./business/BusinessEditPage";
 
-export { default as Product } from "./product/Product";
-export { default as ProductDetail } from "./product/ProductDetail";
-export { default as ProductAdd } from "./product/ProductAdd";
-export { default as ProductEdit } from "./product/ProductEdit";
+export { default as ProductAllPage } from "./product/ProductAllPage";
+export { default as ProductDetailPage } from "./product/ProductDetailPage";
+export { default as ProductAddPage } from "./product/ProductAddPage";
+export { default as ProductEditPage } from "./product/ProductEditPage";
 export { default as ProductSnippet } from "./product/ProductSnippet";

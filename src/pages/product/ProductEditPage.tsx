@@ -25,7 +25,7 @@ async function action({ request }: { request: Request }) {
   return redirect(`product/${response.id}`);
 }
 
-const ProductEdit = () => {
+const ProductEditPage = () => {
   return (
     <div>
       <FormCard
@@ -73,5 +73,5 @@ const ProductEdit = () => {
   );
 };
 
-export default ProductEdit;
+export default ProductEditPage;
 export { action as productEditAction };
