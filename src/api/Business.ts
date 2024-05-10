@@ -12,7 +12,7 @@ export interface Business {
 }
 
 export interface BusinessPublic {
-  pages: number;
+  page: number;
   limit: number;
   search: string;
   total_page: number;
@@ -43,15 +43,15 @@ export interface BusinessPostEditDetailResponse {
 }
 
 export interface AllBusiness {
-  business_name: string;
   business_types: string;
-  create_at: Date;
-  description: string;
-  id: string;
+  business_name: string;
   profile_url: string;
+  id: string;
+  create_at: Date;
   update_at: Date;
-  user_email: string;
-  user_phone_number: string;
-  username: string;
+  description: string;
   is_delete: boolean;
+  user_phone_number: string;
+  user_email: string;
+  username: string;
 }
