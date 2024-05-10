@@ -11,6 +11,15 @@ export interface Business {
   description: string;
 }
 
+export interface BusinessPublic {
+  pages: number;
+  limit: number;
+  search: string;
+  total_page: number;
+  total_data: number;
+  data: AllBusiness[];
+}
+
 export interface BusinessPostEditPayload {
   business_name: string;
   business_types: string;
@@ -38,9 +47,10 @@ export interface AllBusiness {
   create_at: Date;
   description: string;
   id: string;
-  profile_url: string
+  profile_url: string;
   update_at: Date;
   user_email: string;
   user_phone_number: string;
   username: string;
+  is_delete: boolean;
 }

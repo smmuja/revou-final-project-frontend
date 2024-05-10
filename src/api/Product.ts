@@ -11,6 +11,15 @@ export interface Product {
   update_at: Date;
 }
 
+export interface ProductPublic {
+  page: number;
+  limit: number;
+  search: string;
+  total_page: number;
+  total_data: number;
+  data: AllProduct[];
+}
+
 export interface ProductPayload {
   product_name: string;
   product_price: number;
@@ -62,7 +71,6 @@ export interface ProductEditPayload {
   product_price: number;
   description: string;
 }
-
 
 export interface ProductImage {
   id: string;

@@ -4,7 +4,7 @@ import { useBusiness } from "../../hooks/useUserBusiness";
 import { getCookies } from "../../utils/cookie";
 import baseApi from "../../api/baseApi";
 import { useDisclosure } from "@mantine/hooks";
-import { BusinessResponse } from "../../api/postBusiness";
+import { BusinessPostEditDetailResponse } from "@/api/Business";
 
 export default function SendBusinessImage() {
   const [opened, { open, close }] = useDisclosure(false);
@@ -55,7 +55,7 @@ export async function loadBusinessById() {
   const { currentBusinessId } = useBusiness.getState();
 
   const response = await baseApi
-    .get<BusinessResponse>(`/business/${currentBusinessId}`, {
+    .get<BusinessPostEditDetailResponse>(`/business/${currentBusinessId}`, {
       headers: {
         Authorization: "Bearer " + getCookies(),
       },

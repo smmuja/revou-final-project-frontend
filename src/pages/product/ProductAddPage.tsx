@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import baseApi from "../../api/baseApi";
-import { ProductPayload, ProductResponse } from "../../api/postProduct";
+import { ProductPayload, ProductPostEditResponse } from "@/api/Product";
 import { Button, ButtonCancel, FormCard, Input, Text } from "../../components";
 import { getCookies } from "../../utils/cookie";
 import { Form, redirect } from "react-router-dom";
@@ -25,7 +25,7 @@ async function action({ request }: { request: Request }) {
   };
 
   const response = await baseApi
-    .post<ProductPayload, AxiosResponse<ProductResponse>>(
+    .post<ProductPayload, AxiosResponse<ProductPostEditResponse>>(
       "/product",
       {
         product_name,

@@ -1,10 +1,7 @@
 import { Form, redirect } from "react-router-dom";
 import { Button, FormCard, Input, Text, TextArea } from "../../components";
 import baseApi from "../../api/baseApi";
-import {
-  ProductEditPayload,
-  ProductEditResponse,
-} from "../../api/editProductDetail";
+import { ProductEditPayload, ProductPostEditResponse } from "@/api/Product";
 import { AxiosResponse } from "axios";
 
 async function action({ request }: { request: Request }) {
@@ -14,11 +11,14 @@ async function action({ request }: { request: Request }) {
   const productDescription = formData.get("productDesription");
 
   const response = await baseApi
-    .post<ProductEditPayload, AxiosResponse<ProductEditResponse>>("/product", {
-      productName,
-      productPrice,
-      productDescription,
-    })
+    .post<ProductEditPayload, AxiosResponse<ProductPostEditResponse>>(
+      "/product",
+      {
+        productName,
+        productPrice,
+        productDescription,
+      }
+    )
     .then((d) => d.data);
   console.log(response);
 

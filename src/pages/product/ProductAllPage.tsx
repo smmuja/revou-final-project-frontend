@@ -2,16 +2,17 @@ import { Card } from "../../components";
 import UserProfile from "../user/UserSnippet";
 
 import baseApi from "../../api/baseApi";
-import { AllProduct } from "../../api/getProductAll";
+import { AllProduct, ProductPublic } from "@/api/Product";
 
 import { useLoaderData } from "react-router-dom";
 
 export async function loader() {
   const product = await baseApi
-    .get<AllProduct[]>("/product")
+    .get<ProductPublic>("/product")
     .then((d) => d.data);
   console.log(product);
-  return product;
+
+  return product.data;
 }
 
 const ProductAllPage = () => {

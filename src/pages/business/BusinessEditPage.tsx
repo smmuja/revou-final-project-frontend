@@ -1,13 +1,13 @@
 import { Form, redirect, useLoaderData } from "react-router-dom";
 import { Button, ButtonCancel, Input, Text } from "../../components";
 import FormCard from "../../components/FormCard";
-import { getBusinessDetail } from "../../api/getBusinessDetail";
+import { Business } from "@/api/Business";
 import baseApi from "../../api/baseApi";
 import { getCookies } from "../../utils/cookie";
 import {
-  BusinessEditPayload,
-  BusinessEditResponse,
-} from "../../api/editBusinessDetail";
+  BusinessPostEditPayload,
+  BusinessPostEditDetailResponse,
+} from "@/api/Business";
 import { AxiosResponse } from "axios";
 
 export async function loader() {
@@ -17,7 +17,7 @@ export async function loader() {
   };
 
   const business = await baseApi
-    .get<BusinessEditPayload>(`/business`, {
+    .get<BusinessPostEditPayload>(`/business`, {
       headers: headers,
     })
     .then((d) => d.data);
@@ -39,14 +39,17 @@ async function action({ request }: { request: Request }) {
   };
 
   const business = await baseApi
-    .get<BusinessEditPayload>("/business", {
+    .get<BusinessPostEditPayload>("/business", {
       headers: headers,
     })
     .then((d) => d.data);
   console.log(business);
 
   const response = await baseApi
-    .put<BusinessEditPayload, AxiosResponse<BusinessEditResponse>>(
+    .put<
+      BusinessPostEditPayload,
+      AxiosResponse<BusinessPostEditDetailResponse>
+    >(
       "/business",
       {
         business_name,
@@ -64,7 +67,7 @@ async function action({ request }: { request: Request }) {
 }
 
 const BusinessEditPage = () => {
-  const businessDetail = useLoaderData() as getBusinessDetail;
+  const businessDetail = useLoaderData() as Business;
 
   return (
     <div>

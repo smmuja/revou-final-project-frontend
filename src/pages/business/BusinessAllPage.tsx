@@ -3,17 +3,17 @@ import { Card } from "../../components";
 import UserProfile from "../user/UserSnippet";
 
 import baseApi from "../../api/baseApi";
-import { AllBusiness } from "../../api/getBusinessAll";
+import { AllBusiness, BusinessPublic } from "@/api/Business";
 
 import { useLoaderData } from "react-router-dom";
 // import { AxiosResponse } from "axios";
 
 export async function loader() {
   const business = await baseApi
-    .get<AllBusiness[]>("/business")
+    .get<BusinessPublic>("/business")
     .then((d) => d.data);
   //   console.log(product);
-  return business;
+  return business.data;
 }
 
 const BusinessAllPage = () => {
@@ -57,9 +57,9 @@ const BusinessAllPage = () => {
                     <p className="truncate ...">{business.description}</p>
                   </div>
                 </Card>
-                <div className="hidden md:flex">
+                {/* <div className="hidden md:flex">
                   <UserProfile />
-                </div>
+                </div> */}
               </div>
             );
           })}

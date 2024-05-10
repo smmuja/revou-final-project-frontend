@@ -1,5 +1,5 @@
 import { Button } from "@mantine/core";
-import { Business } from "../../api/getUserDetail";
+import { Business } from "@/api/Business";
 import { useBusiness } from "../../hooks/useUserBusiness";
 
 export const BusinessCard = ({ business }: { business: Business }) => {

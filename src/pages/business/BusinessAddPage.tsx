@@ -1,11 +1,14 @@
 import { Form, redirect } from "react-router-dom";
 import { Button, ButtonCancel, FormCard, Input, Text } from "../../components";
-import { BusinessPayload, BusinessResponse } from "../../api/postBusiness";
+import {
+  BusinessPostEditPayload,
+  BusinessPostEditDetailResponse,
+} from "@/api/Business";
 import { AxiosResponse } from "axios";
 import baseApi from "../../api/baseApi";
 import { getCookies } from "../../utils/cookie";
 import { NativeSelect } from "@mantine/core";
-import SendImage from "./SendBusinessImage";
+// import SendImage from "./SendBusinessImage";
 
 async function action({ request }: { request: Request }) {
   const formData = (await request.formData()) as FormData;
@@ -23,7 +26,10 @@ async function action({ request }: { request: Request }) {
   };
   console.log(getCookies());
   const response = await baseApi
-    .post<BusinessPayload, AxiosResponse<BusinessResponse>>(
+    .post<
+      BusinessPostEditPayload,
+      AxiosResponse<BusinessPostEditDetailResponse>
+    >(
       "/business",
       {
         business_name,

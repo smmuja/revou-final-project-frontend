@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import baseApi from "../../api/baseApi";
-import { getUserDetail } from "../../api/getUserDetail";
+import { getUserDetail } from "@/api/User";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Table, TableRow } from "../../components";
 import { getCookies } from "../../utils/cookie";

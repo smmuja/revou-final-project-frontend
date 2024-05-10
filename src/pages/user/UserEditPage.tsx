@@ -1,7 +1,7 @@
 import { Form, redirect } from "react-router-dom";
 import FormCard from "../../components/FormCard";
 import { Button, ButtonCancel, Input, Text, TextArea } from "../../components";
-import { UserEditPayload, UserEditResponse } from "../../api/editUserDetail";
+import { UserPostEdit, UserEditResponse } from "@/api/User";
 
 import baseApi from "../../api/baseApi";
 import { AxiosResponse } from "axios";
@@ -16,7 +16,7 @@ export async function loader() {
   };
 
   const user = await baseApi
-    .get<UserEditPayload>("/user", {
+    .get<UserPostEdit>("/user", {
       headers: headers,
     })
     .then((d) => d.data);
@@ -40,14 +40,14 @@ async function action({ request }: { request: Request }) {
   };
 
   const user = await baseApi
-    .get<UserEditPayload>("/user", {
+    .get<UserPostEdit>("/user", {
       headers: headers,
     })
     .then((d) => d.data);
   console.log(user);
 
   const response = await baseApi
-    .put<UserEditPayload, AxiosResponse<UserEditResponse>>(
+    .put<UserPostEdit, AxiosResponse<UserEditResponse>>(
       `/user`,
       {
         username,
