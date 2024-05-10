@@ -19,48 +19,25 @@ const Product = () => {
 
   return (
     <>
-      {productAll.map((product) => {
-        const productImage =
-          product.profile_url.length > 0
-            ? product.profile_url
-            : "../src/assets/product.png";
-
-        return (
-          <Card key={product.id}>
-            <p>{product.product_name}</p>
-            <img src={productImage} alt="" className="size-50" />
-            <p>{product.product_price}</p>
-          </Card>
-        );
-      })}
-
       <div className="flex flex-row">
         <div>
-          <Card>
-            <img src="./src/assets/product.png" alt="" className="" />
-            <h2 className="font-bold">Product Title</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Asperiores velit sit quod voluptatum obcaecati iure provident
-              reprehenderit quos itaque commodi consequuntur, nihil nostrum
-              corrupti, ipsam deleniti temporibus exercitationem. Illum,
-              voluptatibus!
-            </p>
-          </Card>
+          {productAll.map((product) => {
+            const productImage =
+              product.profile_url.length > 0
+                ? product.profile_url
+                : "../src/assets/dummy.png";
 
-          <Card>
-            <img src="./src/assets/product.png" alt="" className="" />
-            <h2 className="font-bold">Product Title</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Asperiores velit sit quod voluptatum obcaecati iure provident
-              reprehenderit quos itaque commodi consequuntur, nihil nostrum
-              corrupti, ipsam deleniti temporibus exercitationem. Illum,
-              voluptatibus!
-            </p>
-          </Card>
+            return (
+              <Card key={product.id}>
+                <img src={productImage} alt="" className="size-full" />
+                <h2 className="font-bold">{product.product_name}</h2>
+                <p className="">{`Rp${product.product_price}`}</p>
+                <p>{product.description}</p>
+              </Card>
+            );
+          })}
         </div>
-        <div className="hidden sm:flex">
+        <div className="hidden md:flex">
           <UserProfile />
         </div>
       </div>

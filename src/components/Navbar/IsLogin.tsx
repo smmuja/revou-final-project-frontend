@@ -3,7 +3,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { getCookies, setCookies } from "../../utils/cookie";
 import { NavLink, Group, Button } from "@mantine/core";
-import { IconUser, IconLogout } from "@tabler/icons-react";
+import {
+  IconUser,
+  IconLogout,
+  IconUserPlus,
+  IconUserCheck,
+} from "@tabler/icons-react";
 // import { use } from "react-router-dom";
 
 const IsLogin = () => {
@@ -43,18 +48,35 @@ const IsLogin = () => {
           </Button>
         </Group>
       ) : (
-        <Group justify="center" grow pb="xl" px="md">
-          <Button
-            className="mt-5 font-black"
-            variant="outline"
-            onClick={handleLogin}
-          >
-            Log in
-          </Button>
-          <Button className="mt-5" onClick={handleRegister}>
-            Register
-          </Button>
+        <Group justify="center" grow pb="md" px="md">
+          <Link to="/login" className="mt-5 " onClick={handleLogin}>
+            <NavLink
+              label="Log in"
+              leftSection={
+                <IconUserCheck size="1rem" stroke={1.5} className="" />
+              }
+            />
+          </Link>
+          <Link to="/register" className="mt-5" onClick={handleRegister}>
+            <NavLink
+              label="Register"
+              className="min-w-fit"
+              leftSection={<IconUserPlus size="1rem" stroke={1.5} />}
+            />
+          </Link>
         </Group>
+        // <Group justify="center" grow pb="xl" px="md">
+        //   <Button
+        //     className="mt-5 font-black"
+        //     variant="outline"
+        //     onClick={handleLogin}
+        //   >
+        //     Log in
+        //   </Button>
+        //   <Button className="mt-5" onClick={handleRegister}>
+        //     Register
+        //   </Button>
+        // </Group>
       )}
     </div>
   );
