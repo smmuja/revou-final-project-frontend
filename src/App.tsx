@@ -1,6 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { MainLayout, ProtectedLayout } from "./layouts";
+import { MainLayout } from "./layouts";
 
 import {
   Home,
@@ -36,6 +36,7 @@ import {
   BusinessEditAction,
   BusinessEditLoader,
 } from "./pages/business/BusinessEditPage";
+import { BusinessDetailLoader } from "./pages/business/BusinessDetailPage";
 
 // const queryClient = new QueryClient();
 
@@ -85,7 +86,7 @@ function App() {
             {
               path: "/business/:id",
               element: <BusinessDetailPage />,
-              // loader: BusinessDetailLoader,
+              loader: BusinessDetailLoader,
             },
             {
               path: "/business/add",

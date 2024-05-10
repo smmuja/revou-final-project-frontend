@@ -3,6 +3,7 @@ import { Business } from "@/api/Business";
 import { Button, Card } from "../../components";
 import { useNavigate } from "react-router-dom";
 import SendImage from "../business/SendBusinessImage";
+import { useBusiness } from "@/hooks/useUserBusiness";
 
 interface BusinessCardProps extends ComponentProps<"div">, PropsWithChildren {
   business: Business;
@@ -13,12 +14,19 @@ export function BusinessCard({
   business,
   ...resProps
 }: BusinessCardProps) {
+  const navigate = useNavigate();
+
+  const { setCurrentBusinessId } = useBusiness();
+
   const businessImage =
     business.profile_url.length > 0
       ? business.profile_url
       : "../src/assets/dummy.png";
 
-  const navigate = useNavigate();
+  const handleBusinessDetail = () => {
+    setCurrentBusinessId(business.id);
+    navigate(`/business/${business.business_name}`);
+  };
 
   return (
     <>
@@ -41,12 +49,14 @@ export function BusinessCard({
             <Button
               className="w-2/5 bg-yellow-400"
               label={"View"}
-              onClick={() => navigate("/business/:id")}
+              onClick={handleBusinessDetail}
             />
             <Button
               className="w-2/5"
               label={"Edit"}
-              onClick={() => navigate("/business/:id/edit")}
+              onClick={() =>
+                navigate(`/business/${business.business_name}/edit`)
+              }
             />
           </div>
           <div>

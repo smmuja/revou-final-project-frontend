@@ -1,28 +1,40 @@
-// import { useLoaderData } from "react-router-dom";
-// import baseApi from "../../api/baseApi";
-// import { getBusinessDetail } from "../../api/getBusinessDetail";
+import { useLoaderData } from "react-router-dom";
+import baseApi from "../../api/baseApi";
+import { BusinessPostEditDetailResponse } from "@/api/Business";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Table, TableRow } from "../../components";
+import SendBusinessImage from "./SendBusinessImage";
+import { useBusiness } from "@/hooks/useUserBusiness";
+import { getCookies } from "@/utils/cookie";
 // import Business from ".";
 
-// export async function loader() {
-//   const business = await baseApi
-//     .get<getBusinessDetail>("/business/{business_id}")
-//     .then((d) => d.data);
+export async function loader() {
+  const { currentBusinessId } = useBusiness.getState();
 
-//   return business;
-//   // console.log(business);
-// }
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + getCookies(),
+  };
 
-// export async function loader({params}) {
-//   const business = await baseApi
-//   .get<getBusinessDetail>(`/business/${}`)
-// }
+  const business = await baseApi
+    .get<BusinessPostEditDetailResponse>(`/business/${currentBusinessId}`, {
+      headers: headers,
+    })
+    .then((d) => d.data);
+
+  return business;
+  // console.log(business);
+}
 
 const BusinessDetailPage = () => {
+  const businessResponse = useLoaderData() as BusinessPostEditDetailResponse;
+
   const navigate = useNavigate();
   // const businessDetail = useLoaderData() as getBusinessDetail;
-
+  const businessImage =
+    businessResponse.profile_url.length > 0
+      ? businessResponse.profile_url
+      : "../src/assets/dummy.png";
   return (
     <>
       <div>
@@ -35,22 +47,18 @@ const BusinessDetailPage = () => {
             ></Button>
           </div>
           <div className="flex  justify-center m-5">
-            <img src="../src/assets/business.png" alt="" className="size-60" />
+            <img src={businessImage} alt="" className="size-60" />
           </div>
+          <h3>{businessResponse.business_name}</h3>
           <Table label={""} data={""}>
-            <TableRow label={"Sector"} data={"Sector"}></TableRow>
-            <TableRow label={"Established at:"} data={"00-00-00"}></TableRow>
-            <TableRow label={"Number of employees: "} data={"00"}></TableRow>
-            <TableRow label={"Address"} data={"Address detail"}></TableRow>
+            <TableRow
+              label={"Sector"}
+              data={businessResponse.business_types}
+            ></TableRow>
           </Table>
 
-          <p className="">
-            Description: Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Asperiores velit sit quod voluptatum obcaecati iure provident
-            reprehenderit quos itaque commodi consequuntur, nihil nostrum
-            corrupti, ipsam deleniti temporibus exercitationem. Illum,
-            voluptatibus!
-          </p>
+          <p className="">{businessResponse.description}</p>
+          <SendBusinessImage />
         </Card>
 
         <div>
@@ -75,4 +83,4 @@ const BusinessDetailPage = () => {
 };
 
 export default BusinessDetailPage;
-// export { loader as BusinessDetailLoader };
+export { loader as BusinessDetailLoader };
