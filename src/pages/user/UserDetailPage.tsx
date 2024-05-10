@@ -40,9 +40,6 @@ const UserDetailPage = () => {
   const navigate = useNavigate();
   // const { setAllBusiness } = useBusiness();
   const userDetail = useLoaderData() as getUserDetail;
-  // if (userDetail) {
-  //   setAllBusiness(userDetail.business);
-  // }
 
   const userImage =
     userDetail.profile_url.length > 0

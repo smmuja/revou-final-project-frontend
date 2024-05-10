@@ -59,9 +59,6 @@ export function BusinessCard({
               }
             />
           </div>
-          <div>
-            <SendImage />
-          </div>
         </div>
       </Card>
     </>
