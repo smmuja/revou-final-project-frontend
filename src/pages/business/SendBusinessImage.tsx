@@ -33,7 +33,6 @@ export default function SendBusinessImage() {
 export async function sendImageAction({ request }: { request: Request }) {
   const { currentBusinessId, currentBusiness } = useBusiness.getState();
   const formData = await request.formData();
-
   const headers = {
     "Content-Type": "multipart/form-data",
     Authorization: "Bearer " + getCookies(),
@@ -42,12 +41,11 @@ export async function sendImageAction({ request }: { request: Request }) {
     .post(`/business/image/${currentBusinessId}`, formData, {
       headers: headers,
     })
-    .then(() => {
-      // console.log(d.data);
+    .then((d) => {
+      console.log(d.data);
 
       return;
     });
-  // return redirect(`/business/${currentBusinessId}`);
   return redirect(`/business/${currentBusiness.business_name}`);
 }
 

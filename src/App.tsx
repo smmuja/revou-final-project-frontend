@@ -1,6 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { MainLayout, ProtectedLayout } from "./layouts";
+import { MainLayout } from "./layouts";
 
 import {
   Home,
@@ -36,6 +36,8 @@ import {
   BusinessEditAction,
   BusinessEditLoader,
 } from "./pages/business/BusinessEditPage";
+import { BusinessDetailLoader } from "./pages/business/BusinessDetailPage";
+import { sendImageAction } from "./pages/business/SendBusinessImage";
 
 // const queryClient = new QueryClient();
 
@@ -43,7 +45,7 @@ function App() {
   const router = createBrowserRouter([
     {
       element: <MainLayout />,
-      errorElement: <ErrorPage />,
+      // errorElement: <ErrorPage />,
       children: [
         {
           errorElement: <ErrorPage />,
@@ -85,7 +87,8 @@ function App() {
             {
               path: "/business/:id",
               element: <BusinessDetailPage />,
-              // loader: BusinessDetailLoader,
+              loader: BusinessDetailLoader,
+              action: sendImageAction,
             },
             {
               path: "/business/add",

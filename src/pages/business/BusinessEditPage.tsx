@@ -9,6 +9,7 @@ import {
   BusinessPostEditDetailResponse,
 } from "@/api/Business";
 import { AxiosResponse } from "axios";
+import SendBusinessImage from "./SendBusinessImage";
 
 export async function loader() {
   const headers = {
@@ -109,6 +110,7 @@ const BusinessEditPage = () => {
                 />
               </div>
             </div>
+            <SendBusinessImage />
 
             <div>
               <Button label={"Submit"}></Button>

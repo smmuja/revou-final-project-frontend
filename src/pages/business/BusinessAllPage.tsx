@@ -46,19 +46,24 @@ const BusinessAllPage = () => {
                 ? business.profile_url
                 : "../src/assets/dummy.png";
 
+            const userImage =
+              business.profile_url.length > 0
+                ? business.profile_url
+                : "../src/assets/userDummy.png";
+
             return (
               <div className="sm:flex flex-row">
                 <Card key={business.id}>
                   <div className="flex flex-row gap-3">
                     <img
-                      src={business.profile_url}
+                      src={userImage}
                       alt=""
                       className="size-10 rounded-full"
                     />
                     <p className="justify-end">{business.username}</p>
                   </div>
                   <div className="flex justify-center">
-                    <img src={businessImage} alt="" className="size-60" />
+                    <img src={businessImage} alt="" className="size-full" />
                   </div>
                   <img
                     src={`${business.profile_url} | './src/assets/business.png' `}

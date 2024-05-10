@@ -37,6 +37,7 @@ export interface BusinessPostEditDetailResponse {
   user_phone_number: string;
   user_email: string;
   username: string;
+  is_delete: boolean;
   product: Product[];
   business_images: Image[];
 }

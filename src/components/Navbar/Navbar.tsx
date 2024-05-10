@@ -1,7 +1,4 @@
-// import { Hamburger } from "./Hamburger";
-// import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
-// import SearchBar from "./SearchBar";
 import IsLogin from "./IsLogin";
 
 import { Group, Divider, Box, Burger, Drawer, NavLink } from "@mantine/core";
@@ -13,7 +10,6 @@ const Navbar = () => {
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
-  // const theme = useMantineTheme();
 
   return (
     <Box pb={0} pt={0}>
@@ -64,7 +60,6 @@ const Navbar = () => {
         onClose={closeDrawer}
         size="sm"
         padding="md"
-        // title="InovHub"
         hiddenFrom="sm"
         zIndex={1000000}
         withCloseButton={false}
