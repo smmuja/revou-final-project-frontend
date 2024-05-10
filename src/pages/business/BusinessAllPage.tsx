@@ -3,28 +3,26 @@ import { Card } from "../../components";
 import UserProfile from "../user/UserSnippet";
 
 import baseApi from "../../api/baseApi";
-import { AllBusiness, BusinessPublic } from "@/api/Business";
+import { BusinessPublic } from "@/api/Business";
 
-import { useLoaderData } from "react-router-dom";
-// import { AxiosResponse } from "axios";
-import { useBusinessList } from "@/hooks/useBusinessList"
+import { useBusinessList } from "@/hooks/useBusinessList";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export async function loader() {
-  const {initBusinessList} = useBusinessList.getState();
+  const { initBusinessList } = useBusinessList.getState();
   const business = await baseApi
     .get<BusinessPublic>("/business?limit=3")
     .then((d) => {
-      initBusinessList(d.data)
-      return d.data
+      initBusinessList(d.data);
+      return d.data;
     });
   return business;
 }
 
 const BusinessAllPage = () => {
   //const businessAll = useLoaderData() as AllBusiness[];
-  const businessList = useBusinessList((s) => s.businessList)
-  const { limit, page, total_data, getMoreBusiness, total_page } = useBusinessList()
+  const businessList = useBusinessList((s) => s.businessList);
+  const { page, total_data, getMoreBusiness, total_page } = useBusinessList();
   const hasMore = page < total_page;
   return (
     <>

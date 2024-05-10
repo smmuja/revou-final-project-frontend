@@ -2,7 +2,6 @@ import { ComponentProps, PropsWithChildren } from "react";
 import { Business } from "@/api/Business";
 import { Button, Card } from "../../components";
 import { useNavigate } from "react-router-dom";
-import SendImage from "../business/SendBusinessImage";
 import { useBusiness } from "@/hooks/useUserBusiness";
 
 interface BusinessCardProps extends ComponentProps<"div">, PropsWithChildren {

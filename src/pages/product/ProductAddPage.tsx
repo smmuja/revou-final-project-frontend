@@ -5,12 +5,7 @@ import { Button, ButtonCancel, FormCard, Input, Text } from "../../components";
 import { getCookies } from "../../utils/cookie";
 import { Form, redirect } from "react-router-dom";
 import { useBusiness } from "../../hooks/useUserBusiness";
-import {
-  Group,
-  HoverCard,
-  Button as MantineButton,
-  Text as MantineText,
-} from "@mantine/core";
+import { Group, HoverCard, Button as MantineButton } from "@mantine/core";
 import { BusinessCard } from "./BusinessCard";
 
 async function action({ request }: { request: Request }) {

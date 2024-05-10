@@ -9,7 +9,7 @@ import {
 import { AxiosError, AxiosResponse } from "axios";
 import { setCookies } from "../../../utils/cookie";
 import { useError } from "../../../hooks/useError";
-import { IconX, IconCheck } from "@tabler/icons-react";
+import { IconX } from "@tabler/icons-react";
 import { Notification, rem } from "@mantine/core";
 
 async function action({ request }: { request: Request }) {
