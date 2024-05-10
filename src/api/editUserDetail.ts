@@ -1,11 +1,4 @@
-export interface UserEditPayload {
-  phone_number: string;
-  address: string;
-  occupation: string;
-  description: string;
-  username: string;
-  email: string;
-}
+
 
 export interface UserEditResponse {
   access_token(access_token: any): unknown;
