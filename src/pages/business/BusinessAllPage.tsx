@@ -7,23 +7,40 @@ import { AllBusiness, BusinessPublic } from "@/api/Business";
 
 import { useLoaderData } from "react-router-dom";
 // import { AxiosResponse } from "axios";
+import { useBusinessList } from "@/hooks/useBusinessList"
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export async function loader() {
+  const {initBusinessList} = useBusinessList.getState();
   const business = await baseApi
-    .get<BusinessPublic>("/business")
-    .then((d) => d.data);
-  //   console.log(product);
-  return business.data;
+    .get<BusinessPublic>("/business?limit=3")
+    .then((d) => {
+      initBusinessList(d.data)
+      return d.data
+    });
+  return business;
 }
 
 const BusinessAllPage = () => {
-  const businessAll = useLoaderData() as AllBusiness[];
-  //   console.log(business);
+  //const businessAll = useLoaderData() as AllBusiness[];
+  const businessList = useBusinessList((s) => s.businessList)
+  const { limit, page, total_data, getMoreBusiness, total_page } = useBusinessList()
+  const hasMore = page < total_page;
   return (
     <>
       <div className="flex flex-row">
-        <div>
-          {businessAll.map((business) => {
+        <InfiniteScroll
+          next={getMoreBusiness}
+          hasMore={hasMore}
+          dataLength={total_data}
+          loader={<h4>Loading...</h4>}
+          endMessage={
+            <p style={{ textAlign: "center" }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+        >
+          {businessList.map((business) => {
             const businessImage =
               business.profile_url.length > 0
                 ? business.profile_url
@@ -63,7 +80,7 @@ const BusinessAllPage = () => {
               </div>
             );
           })}
-        </div>
+        </InfiniteScroll>
         <div className="hidden md:flex">
           <UserProfile />
         </div>
